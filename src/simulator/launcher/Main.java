@@ -366,8 +366,10 @@ public class Main {
 
 		if (_executionMode.equals("batch"))
 			startBatchMode();
-		else
+		else if (_executionMode.equals("gui"))
 			startGUIMode();
+		else
+			throw new ParseException("Invalid execution mode: " + _executionMode);
 
 	}
 

@@ -1,0 +1,9 @@
+Extra
+
+- [x] Allow changing the position of a body by dragging it when the simulation is not running. It is very similar to the graph viewer example that we have seen in class, but you will have to add a public setPosition method to the bodies.
+
+- [x] Allow changing the color of a body. For this, maintain a map in the Viewer class that maps bodies to colors (and use those colors in paintComponent), and then when the simulation is stopped, if the user clicks on a body open a dialog to choose a color as follows.
+
+- [x] Allow adding a body, in a similar way to what we do for changing laws. The best is to add a method addBody(JSONObject) to the Controller for this, which calls the factory to create the body and then and then pass it to the simulator.
+
+- [x] Allow deleting a body (open a dialog and ask the user to select a body from a combox box). For this you will have to add delBody(String) to PhysicsSimulator and also the Controller.

@@ -1,0 +1,100 @@
+general
+=======
+
+- very good and very clean code! I only have some comment about refactoring the builders that you might consider doing for the next assignment.
+
+model
+=====
+
+# Body.java:
+
+- you should define equals(Object) not equals(Body)
+> DONE
+
+# ForceLaws.java: ok
+
+# MassLosingBody.java: ok
+
+# MovingTowardsFixedPoint.java: ok
+
+# NewtonUniversalGravitation.java: ok
+
+# NoForce.java: ok
+
+# PhysicsSimulator.java: ok
+
+
+factories
+=========
+
+# BasicBodyBuilder.java: ok
+
+# Builder.java:
+
+ - better define createInstance in this class, and add field type that is set by sub clases to be used in the if-statement. This way you remove the code duplicated in all builders. This requires making createTheInstance abstract in this class.
+> DONE
+
+ - better define getBuilderInfo in this class, such that it builds the json with type and desc (assuming they are fields in Builder and set by sub classes), and ask subclasses for data using a method getData() for example.
+> DONE
+
+# BuilderBasedFactory.java: 
+ 
+ - in the loop, just exit with "Return t" when a builder succeeds to build an object, no need to keep traversing the list
+> DONE
+
+# EpsilonEqualStatesBuilder.java: ok
+
+# Factory.java: ok
+
+# MassEqualStatesBuilder.java: ok
+
+# MassLosingBodyBuilder.java: ok
+
+# MovingTowardsFixedPointBuilder.java:
+
+ - instead of having so many cases, just use local variables g and c with initial values as fields, then modify them if info has different information, and finally create the object
+> DONE
+
+# NewtonUniversalGravitationBuilder.java: ok
+
+# NoForceBuilder.java: ok
+
+control
+=======
+
+# Controller.java: ok
+
+# EpsilonEqualStates.java:
+
+- you can refactor the following code into a separated method and call it 3 times
+			Vector2D pA = new Vector2D(a.getJSONArray("p").getDouble(0),a.getJSONArray("p").getDouble(1));
+			Vector2D pB = new Vector2D(b.getJSONArray("p").getDouble(0),b.getJSONArray("p").getDouble(1));
+			
+			if(Math.abs(pA.distanceTo(pB)) > eps )
+				return false;
+			
+			Vector2D vA = new Vector2D(a.getJSONArray("v").getDouble(0),a.getJSONArray("v").getDouble(1));
+			Vector2D vB = new Vector2D(b.getJSONArray("v").getDouble(0),b.getJSONArray("v").getDouble(1));
+			
+			if(Math.abs(vA.distanceTo(vB)) > eps )
+				return false;
+			
+			Vector2D fA = new Vector2D(a.getJSONArray("f").getDouble(0),a.getJSONArray("f").getDouble(1));
+			Vector2D fB = new Vector2D(b.getJSONArray("f").getDouble(0),b.getJSONArray("f").getDouble(1));
+			
+			if(Math.abs(fA.distanceTo(fB)) > eps )
+				return false;
+
+> DONE
+
+
+# MassEqualStates.java: ok
+
+# StateComparator.java: ok
+
+
+
+launcher
+========
+
+# Main.java: ok
